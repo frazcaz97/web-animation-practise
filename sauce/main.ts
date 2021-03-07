@@ -1,3 +1,9 @@
-import { Renderer } from "./render";
+import { Render } from "./render";
 
-let render = new Renderer();
+const run = (): void => {
+    let render = new Render();;    
+}
+
+
+
+window.onload = run;
