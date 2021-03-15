@@ -3,7 +3,7 @@ import Render from "./render.js";
 export class Animation {
 
     private _imageURL: string;
-    private _image: any;
+    private _image: ImageBitmapSource;
     private _posX: number;
     private _posY: number;
     private _width: number;
@@ -16,7 +16,7 @@ export class Animation {
     private _imageLoaded: boolean;
     private _animationStates: any;
 
-    constructor(image: any, x: number, y: number, width: number, height: number, frameCount: number, duration: number) {
+    constructor(image: string, x: number, y: number, width: number, height: number, frameCount: number, duration: number) {
         this._imageURL = image;
         this._posX = x;
         this._posY = y;
@@ -35,7 +35,7 @@ export class Animation {
         this.createAnimationStates();
     }
 
-    loadAnimationSheet(): any {
+    loadAnimationSheet(): void {
         let img = new Image();
         img.onload = () => {
             this._image = img;
@@ -44,7 +44,7 @@ export class Animation {
         img.src = this._imageURL;
     }
 
-    createAnimationStates() {   //create an array of objects for each frames starting x and y points
+    createAnimationStates(): void {   //create an array of objects for each frames starting x and y points
         for (let i = 0; i < this._frameCount; i++) {
             this._animationStates.push({
                 x: this._width * i,
